@@ -1,0 +1,10 @@
+<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 2250 2250"
+		 xmlns="http://www.w3.org/2000/svg">
+	<filter id="shadow" color-interpolation-filters="sRGB">
+		<feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.5"/>
+	</filter>
+	<path d="m0 0h2250v2250h-2250z" fill="#00d55b"/>
+	<circle cx="129.567" cy="1979.17" fill="#05f4a0" r="483.322" class="bubble-1" />
+	<circle cx="484.917" cy="265.203" fill="#00a54f" r="703.297" class="bubble-2" />
+	<circle cx="2127.83" cy="1783.75" r="879.504" fill="#00e995" class="bubble-3" />
+</svg>

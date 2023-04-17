@@ -1,0 +1,11 @@
+{
+	"common": {
+		"email": "Email",
+		"password": "Password",
+		"signIn": "Sign In",
+		"login": "Log in",
+		"register": "Register",
+		"newAccount": "New Account",
+		"send": "Send"
+	}
+}

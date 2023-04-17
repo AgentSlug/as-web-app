@@ -1,0 +1,30 @@
+{
+  "short_name": "AgentSlug.com",
+  "name": "AgentSlug.com - uptime and content monitoring tool.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x15",
+      "type": "image/png"
+    },
+    {
+      "src": "as-favicon64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "as-favicon144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "as-favicon196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

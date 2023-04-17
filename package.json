@@ -1,0 +1,33 @@
+{
+  "name": "as-web-app",
+  "private": true,
+  "version": "4.0.0-next.1",
+  "repository": "git@github.com:AgentSlug/as-web-app.git",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "dev:sandbox": "vite --port 3000 --mode sandbox",
+    "dev:production": "vite --port 3000 --mode production",
+    "build": "vite build --mode production",
+    "serve": "vite preview --port 3000"
+  },
+  "dependencies": {
+    "html-classnames": "^1.0.0",
+    "i18next": "^22.4.14",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.0",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.10.0",
+    "react-router-dom": "^6.10.0",
+    "zustand": "^4.3.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "sass": "^1.62.0",
+    "vite": "^4.2.1"
+  }
+}
