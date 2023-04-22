@@ -1,14 +1,30 @@
 :root {
 	--width-content-max: min(1000px, 100%);
 	--width-content-message: min(600px, 100%);
-	--radius-base: 30px;
+	--radius-base: 16px;
   --color-base: #000;
   --color-background: #fff;
 	--color-background-behind: #f0f0f0;
-	--color-background-glass: rgba(255, 255, 255, 0.5);
-	--color-background-glass-no-blur: rgba(255, 255, 255, 0.9);
+	--color-background-elevated: rgb(162 162 162 / 10%);
+	--color-background-elevated-10: rgb(162 162 162 / 20%);
+	--color-background-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+	--color-background-glass-heavy: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+	--color-background-glass-no-blur: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+	--shadow-elevated: 0 0 1px rgba(0,0,0,0.5);
+	--shadow-elevated-10: 0 0 1px 1px rgba(0,0,0,0.7);
+	--shadow-elevated-20: 0 0 2px 1px rgba(0,0,0,0.9);
+
+	--animation-base: 0.2s ease-in-out;
+
+	--font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-mono: 'Courier', monospace;
 }
 
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--animation-base: 0;
+	}
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --color-base: #e0e0e0;
@@ -30,10 +46,11 @@ html, body, #root {
 
 html {
   font-size: 16px;
+	line-height: 1.6rem;
 	height: 100%;
 	min-height: 100vh;
 	width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family-base);
   background-color: var(--color-background-behind);
   color: var(--color-base);
 }
@@ -44,6 +61,15 @@ html {
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 1fr auto;
 	gap: 1rem;
+}
+
+h1, h2, h3 {
+	margin: 0 0 1rem;
+	padding: 0;
+}
+
+h1 {
+	font-size: 2rem;
 }
 
 #bubbles {
@@ -58,6 +84,10 @@ html {
 	display: flex;
 	justify-content: center;
 	background: var(--color-background-glass-no-blur);
+	@supports (backdrop-filter: blur(10px)) {
+		background: var(--color-background-glass-heavy);
+		backdrop-filter: blur(20px);
+	}
 }
 .as-nav-menu {
 	display: flex;
@@ -95,7 +125,99 @@ html {
 	}
 }
 .as-glass {
-	padding: 2rem;
-	background: var(--color-background-glass-no-blur);
+	padding: 0;
+	display: grid;
+	gap: 1rem;
 	border-radius: var(--radius-base);
+	background: var(--color-background-glass-no-blur);
+	@supports (backdrop-filter: blur(10px)) {
+		background: var(--color-background-glass);
+		backdrop-filter: blur(20px) saturate(0.6);
+	}
+	@supports (-webkit-backdrop-filter: blur(10px)) {
+		background: var(--color-background-glass);
+		-webkit-backdrop-filter: blur(20px) saturate(0.6);
+	}
+
+	&__title {
+		padding: 2rem 2rem 1rem;
+		margin: 0;
+	}
+
+	&__content {
+		background: var(--color-background);
+		padding: 2rem;
+		border-radius: 0 0 16px 16px
+	}
 }
+
+
+.as-form {
+	display: grid;
+	gap: 1rem;
+	&__group {
+		display: grid;
+	}
+
+	input {
+		padding: 0.5rem;
+		border-radius: 4px;
+		border: 0;
+		background: var(--color-background-elevated);
+		color: var(--color-base);
+		transition: all var(--animation-base);
+		box-shadow: var(--shadow-elevated);
+		font-family: var(--font-family-mono);
+		&:focus {
+			outline: none;
+			border: 0;
+			box-shadow: var(--shadow-elevated-10);
+			transform: scale(1.01);
+		}
+	}
+}
+
+.as-btn {
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	border: 0;
+	font-weight: 500;
+	font-family: var(--font-family-mono);
+	background: var(--color-background-elevated);
+	color: var(--color-base);
+	transition: all var(--animation-base);
+	box-shadow: var(--shadow-elevated);
+	cursor: pointer;
+	&:focus {
+		outline: none;
+		border: 0;
+		box-shadow: var(--shadow-elevated-10);
+		background: var(--color-background-elevated-10);
+		transform: scale(1.02);
+	}
+	&:hover {
+		transform: scale(1.02);
+	}
+}
+
+#bubbles {
+	.bubbles {
+		&_top {
+			circle {
+				filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));
+			}
+		}
+
+		&__bottom-left {
+			circle {
+				filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.5));
+			}
+		}
+		&_bottom-right {
+			circle {
+				filter: drop-shadow(0px 0px 800px rgba(0, 0, 0, 0.5));
+			}
+		}
+	}
+}
+

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
 import {LoginForm} from '../components/Auth/LoginForm';
-import {useTranslation} from "react-i18next";
 
 const Layout = ({ children, type = 'signIn'}) => {
 	const [t] = useTranslation();
@@ -9,8 +9,10 @@ const Layout = ({ children, type = 'signIn'}) => {
 
 	return (
 		<div className="as-main--auth__main as-glass">
-			<h1>{headline}</h1>
-			{children}
+			<h1 className="as-glass__title">{headline}</h1>
+			<div className="as-glass__content">
+				{children}
+			</div>
 		</div>
 	);
 };
