@@ -1,7 +1,10 @@
+@import './_mixins';
+
 :root {
 	--width-content-max: min(1000px, 100%);
 	--width-content-message: min(600px, 100%);
 	--radius-base: 16px;
+	--radius-narrow: 8px;
 	--color-base: #000;
 	--color-base-inverted: #fff;
 	--color-background-inverted: #000;
@@ -13,9 +16,11 @@
 	--color-background-glass-mid: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
 	--color-background-glass-heavy: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
 	--color-background-glass-no-blur: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+	--color-background-toast: white;
 	--shadow-elevated: 0 0 1px rgba(0,0,0,0.5);
 	--shadow-elevated-10: 0 0 1px 1px rgba(0,0,0,0.7);
 	--shadow-elevated-20: 0 0 2px 1px rgba(0,0,0,0.9);
+	--shadow-floating: 0 0 5px 0px rgba(0,0,0,0.2);
 
 	--backdrop-glass: blur(20px) saturate(0.6);
 	--backdrop-glass-standalone: blur(20px) saturate(0.6);
@@ -126,14 +131,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-	border-radius: var(--radius-base);
-	background: var(--color-background-glass-no-blur);
-	box-shadow: 0 0 6px oklch(0 0 0 / 0.40);
-	backface-visibility: hidden;
-	@supports (backdrop-filter: blur(10px)) {
-		background: var(--color-background-glass);
-		backdrop-filter: var(--backdrop-glass);
-	}
+	@include glass;
 
 	p {
 		margin: 0;

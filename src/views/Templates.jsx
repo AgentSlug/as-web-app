@@ -5,6 +5,7 @@ import {Bubbles} from '../components/Bubbles';
 import classNames from 'html-classnames';
 import { version } from '../../package.json';
 import {useTranslation} from 'react-i18next';
+import {Toast} from '../components/Toast';
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const offset = (new Date()).getTimezoneOffset() / -60;
@@ -70,6 +71,7 @@ export const TemplateMain = ({ children }) => {
 				<FooterData />
 			</footer>
 			<Bubbles type={bubblesType}/>
+			<Toast />
 		</>
 	);
 };

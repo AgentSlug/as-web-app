@@ -14,12 +14,6 @@
 			grid-area: main;
 		}
 
-		[class*='_addon'] {
-			.as-glass__content {
-
-			}
-		}
-
 		&__addon--magic-link {
 			grid-area: magic;
 		}

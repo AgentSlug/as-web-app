@@ -6,7 +6,8 @@
 		"login": "Zaloguj się",
 		"register": "Zarejestruj się",
 		"newAccount": "Nowe konto",
-		"send": "Wyślij"
+		"send": "Wyślij",
+		"ok": "OK"
 	},
 	"auth": {
 		"magicLinkHeadline": "Logowanie za pomocą linku",

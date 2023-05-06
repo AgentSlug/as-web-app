@@ -1,0 +1,10 @@
+@mixin glass($filter: --backdrop-glass) {
+	border-radius: var(--radius-base);
+	background: var(--color-background-glass-no-blur);
+	box-shadow: 0 0 6px oklch(0 0 0 / 0.40);
+	backface-visibility: hidden;
+	@supports (backdrop-filter: blur(10px)) {
+		background: var(--color-background-glass);
+		backdrop-filter: var($filter);
+	}
+}

@@ -1,0 +1,54 @@
+@import './_mixins';
+
+@keyframes slideIn {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 11.5rem, 0);
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		transform: translate3d(0, 11.5rem, 0);
+	}
+
+	10% {
+		transform: translate3d(0, 12rem, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+.as-toast {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: -10rem;
+	right: 0;
+
+	&__content {
+		background: var(--color-background-toast);
+		width: min(30ch, 100%);
+		padding: 1rem;
+		display: grid;
+		min-height: 3rem;
+		grid-template-columns: 1fr min-content;
+		align-items: center;
+		box-shadow: var(--shadow-floating);
+		border-radius: var(--radius-narrow);
+		transform: translateY(0);
+		// when visible
+		&--visible {
+			animation: slideIn 500ms ease-in-out forwards;
+		}
+		&--hiding {
+			animation: slideOut 500ms ease-in-out forwards;
+		}
+	}
+}

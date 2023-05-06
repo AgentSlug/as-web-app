@@ -6,7 +6,8 @@
 		"login": "Log in",
 		"register": "Register",
 		"newAccount": "New Account",
-		"send": "Send"
+		"send": "Send",
+		"ok": "OK"
 	},
 	"auth": {
 		"magicLinkHeadline": "Log in with a magic link",
