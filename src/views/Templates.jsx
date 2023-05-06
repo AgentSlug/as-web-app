@@ -1,9 +1,37 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {Container} from '../components/Container';
-import {Bubbles} from "../components/Bubbles";
-import classNames from "html-classnames";
+import {Bubbles} from '../components/Bubbles';
+import classNames from 'html-classnames';
+import { version } from '../../package.json';
+import {useTranslation} from 'react-i18next';
 
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const offset = (new Date()).getTimezoneOffset() / -60;
+
+const FooterData = () => {
+	const l = useTranslation();
+
+	return (
+		<div className="as-footer__data">
+			<div className="as-footer__data__item">
+				{`${l.t('footer.timezone')}: ${timeZone} (UTC${offset >= 0 ? '+' : ''}${offset})`}
+			</div>
+			<div className="as-footer__data__item">
+				{version}
+			</div>
+		</div>
+	);
+};
+
+const getBubblesType = (pathname) => {
+	switch (true) {
+	case pathname.startsWith('/auth'):
+		return 'neutral';
+	default:
+		return 'success';
+	}
+};
 
 export const TemplateMain = ({ children }) => {
 	const location = useLocation();
@@ -19,6 +47,7 @@ export const TemplateMain = ({ children }) => {
 	}, {});
 	const mainClassNames = classNames('as-main', modifiers);
 
+	const bubblesType = getBubblesType(location.pathname);
 	return (
 		<>
 			<header className="as-header">
@@ -38,11 +67,9 @@ export const TemplateMain = ({ children }) => {
 				{children}
 			</main>
 			<footer className="as-footer">
-				<Container>
-					foxoter
-				</Container>
+				<FooterData />
 			</footer>
-			<Bubbles />
+			<Bubbles type={bubblesType}/>
 		</>
 	);
 };

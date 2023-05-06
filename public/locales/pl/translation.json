@@ -17,5 +17,8 @@
 		"registerHeadline": "Nowe konto",
 		"registerCTA": "Załóż konto",
 		"registerDescription": "Rejestracja zajmuje kilka sekund i nie wymaga karty płatniczej!"
+	},
+	"footer": {
+		"timezone": "Twoja strefa czasowa"
 	}
 }

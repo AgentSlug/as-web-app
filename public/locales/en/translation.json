@@ -17,5 +17,8 @@
 		"registerHeadline": "New account",
 		"registerCTA": "Create an account",
 		"registerDescription":"Create new account in seconds. No credit card required!"
+	},
+	"footer":{
+		"timezone": "Your time zone"
 	}
 }

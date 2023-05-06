@@ -1,9 +1,16 @@
 import React from 'react';
+import classNames from "html-classnames";
 
-export const Bubbles = () => {
+export const Bubbles = ({ type }) => {
+	const className = classNames('bubbles', {
+		'--neutral': type === 'neutral',
+		'--success': type === 'success',
+	});
+
 	return (
 		<svg
 			id="bubbles"
+			className={className}
 			clipRule="evenodd"
 			fillRule="evenodd"
 			strokeLinejoin="round"

@@ -1,4 +1,27 @@
-#bubbles {
+.bubbles {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	inset: 0;
+	z-index: -1;
+}
+
+.bubbles {
+	&.bubbles--neutral {
+		.bubbles__bg {
+			fill: oklch(0.61 0.12 246.48);
+		}
+		.bubbles__top circle {
+			fill: oklch(0.67 0.16 232.14);
+		}
+		.bubbles__bottom-right circle {
+			fill: oklch(0.75 0.13 227.04);
+		}
+		.bubbles__bottom-left circle {
+			fill: oklch(0.67 0.12 226.14);
+		}
+
+	}
 	.bubbles {
 		&__bg {
 			fill: oklch(0.71 0.21 148.43);

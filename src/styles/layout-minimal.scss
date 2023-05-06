@@ -1,0 +1,41 @@
+
+.as-main {
+	display: grid;
+	gap: 2rem;
+	--max-grid-size: calc(var(--width-content-message) / 2);
+	&--auth {
+
+		grid-template:
+			'. . main main . .' min-content
+			'. magic magic register register .' min-content
+			'. . . . . .' max-content / 1fr 1fr var(--max-grid-size) var(--max-grid-size) 1fr 1fr;
+
+		&__main {
+			grid-area: main;
+		}
+
+		[class*='_addon'] {
+			.as-glass__content {
+
+			}
+		}
+
+		&__addon--magic-link {
+			grid-area: magic;
+		}
+
+		&__addon--register {
+			grid-area: register;
+		}
+	}
+
+	@media screen and (max-width:800px) {
+		&--auth {
+			grid-template:
+				'. main .' min-content
+				'. magic .' min-content
+				'. register .' min-content
+				'. . .' max-content / auto auto auto;
+		}
+	}
+}
