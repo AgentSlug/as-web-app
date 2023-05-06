@@ -7,5 +7,15 @@
 		"register": "Register",
 		"newAccount": "New Account",
 		"send": "Send"
+	},
+	"auth": {
+		"magicLinkHeadline": "Log in with a magic link",
+		"loginLinkCTA": "Log in",
+		"loginLinkDescription": "Already have an account? Log in.",
+		"magicLinkCTA": "Send me a magic link",
+		"magicLinkDescription":"Log in quickly with an e-mail link.",
+		"registerHeadline": "New account",
+		"registerCTA": "Create an account",
+		"registerDescription":"Create new account in seconds. No credit card required!"
 	}
 }

@@ -2,25 +2,78 @@ import React, {useEffect} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import {LoginForm} from '../components/Auth/LoginForm';
+import classNames from 'html-classnames';
 
-const Layout = ({ children, type = 'signIn'}) => {
-	const [t] = useTranslation();
-	const headline = t(`common.${type}`);
-
+const LayoutMain = ({ children, headline }) => {
 	return (
 		<div className="as-main--auth__main as-glass">
-			<h1 className="as-glass__title">{headline}</h1>
-			<div className="as-glass__content">
+			<h1>{headline}</h1>
+			<div>
 				{children}
 			</div>
 		</div>
 	);
 };
-const LoginBox = () => {
+
+const LayoutAddon = ({ children, type }) => {
+	const classes = classNames('as-main--auth__addon', {
+		'__addon': true,
+		[`--${type}`]: true,
+	});
+
 	return (
-		<Layout>
-			<LoginForm />
-		</Layout>
+		<div className={`${classes} as-glass as-glass--flip`}>
+			{ children }
+		</div>
+	);
+};
+
+const MagicLinkTeaser = () => {
+	const [t] = useTranslation();
+	return (
+		<LayoutAddon type="magic-link">
+			<h2>{t('auth.magicLinkHeadline')}</h2>
+			<div>
+				<p>{t('auth.magicLinkDescription')}</p>
+				<a
+					href="/auth/magic-link"
+					className="as-btn">
+					{t('auth.magicLinkCTA')}
+				</a>
+			</div>
+		</LayoutAddon>
+	);
+};
+
+const RegisterTeaser = () => {
+	const [t] = useTranslation();
+	return (
+		<LayoutAddon type="register">
+			<h2>{t('auth.registerHeadline')}</h2>
+			<div>
+				<p>{t('auth.registerDescription')}</p>
+				<a
+					href="/auth/register"
+					className="as-btn">
+					{t('auth.registerCTA')}
+				</a>
+			</div>
+		</LayoutAddon>
+	);
+};
+
+const LoginBox = () => {
+	const [t] = useTranslation();
+	const type = 'signIn';
+	const headline = t(`common.${type}`);
+	return (
+		<>
+			<LayoutMain headline={headline}>
+				<LoginForm />
+			</LayoutMain>
+			<MagicLinkTeaser />
+			<RegisterTeaser />
+		</>
 	);
 };
 

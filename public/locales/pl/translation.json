@@ -1,0 +1,21 @@
+{
+	"common": {
+		"email": "Email",
+		"password": "Hasło",
+		"signIn": "Logowanie",
+		"login": "Zaloguj się",
+		"register": "Zarejestruj się",
+		"newAccount": "Nowe konto",
+		"send": "Wyślij"
+	},
+	"auth": {
+		"magicLinkHeadline": "Logowanie za pomocą linku",
+		"loginLinkCTA": "Zaloguj się",
+		"loginLinkDescription": "Masz już konto? Zaloguj się!",
+		"magicLinkCTA": "Wyślij magiczny link",
+		"magicLinkDescription": "Użyj szybkiego logowania za pomocą linku w wiadomości e-mail.",
+		"registerHeadline": "Nowe konto",
+		"registerCTA": "Załóż konto",
+		"registerDescription": "Rejestracja zajmuje kilka sekund i nie wymaga karty płatniczej!"
+	}
+}
