@@ -1,0 +1,26 @@
+#bubbles {
+	.bubbles {
+		&__bg {
+			fill: oklch(0.71 0.21 148.43);
+		}
+		&__top {
+			circle {
+				filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));
+				fill: oklch(0.59 0.18 150.05);
+			}
+		}
+
+		&__bottom-left {
+			circle {
+				filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.5));
+				fill: oklch(0.86 0.21 159.07);
+			}
+		}
+		&__bottom-right {
+			circle {
+				filter: drop-shadow(0px 0px 800px rgba(0, 0, 0, 0.5));
+				fill: oklch(0.82 0.21 157.57);
+			}
+		}
+	}
+}

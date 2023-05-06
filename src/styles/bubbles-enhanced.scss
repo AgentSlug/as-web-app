@@ -1,0 +1,34 @@
+html:has(input:focus) {
+	#bubbles {
+		circle {
+			transform: scale3d(0.8, 0.8, 0.8);
+		}
+	}
+}
+
+#bubbles {
+	circle {
+		transform: scale3d(1, 1, 1);
+		transition: all 0.5s ease-in-out;
+		transform-origin: center;
+		transform-box: fill-box;
+	}
+	.bubbles {
+		&__top {
+			circle {
+				animation-delay: 3s;
+			}
+		}
+
+		&__bottom-left {
+			circle {
+				animation-delay: 1s;
+			}
+		}
+		&__bottom-right {
+			circle {
+				animation-delay: 2s;
+			}
+		}
+	}
+}
