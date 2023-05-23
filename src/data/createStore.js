@@ -1,31 +1,39 @@
 import { create } from 'zustand';
 import { anonApi, userApi } from './api';
 
-export const useUserStore = create((set) => ({
-	userData: {},
+export const useUserStore = create((set, get) => ({
+	data: {},
 	fetched: false,
 	loggedIn: false,
 	fetch: async () => {
-
+		const [body] = await userApi.get('/account');
+		const { User } = body;
+		set({ data: {...User}, fetched: true, loggedIn: true });
 	},
 	login: async (email, password) => {
-		const response = anonApi.post('/auth/tokens', {
+		const [body, response]  = await anonApi.post('/auth/tokens', {
 			login: email,
 			password,
 			manual: 0
 		});
-		if (response.status === 201) {
-			const token = await response.json();
-			console.log(token);
-			return;
+		if (response.status !== 201) {
+			throw new Error('Invalid response code');
 		}
 
+		const { Token } = body;
+		const token = Token.token;
+		await userApi.setToken(token);
+		get().init();
+	},
+	logout() {
+		userApi.removeToken();
+		set({ data: {}, fetched: true, loggedIn: false });
 	},
 	init: async () => {
 		if (userApi.isLoggedIn()) {
-			return this.fetch();
+			return get().fetch();
 		}
-		set({ fetched: true, isLoggedIn: false });
+		set({ fetched: true, loggedIn: false });
 	}
 }));
 
@@ -69,7 +77,7 @@ export const useToastStore = create((set, get) => ({
 	dispatch: (toast) => {
 		toastId++;
 		set((state) => ({
-			toasts: [...state.toasts, {type: 'neutral', ...toast, id: toastId }]
+			toasts: [...state.toasts, { type: 'neutral', id: toastId, ...toast }]
 		}));
 	},
 	clear: () => {

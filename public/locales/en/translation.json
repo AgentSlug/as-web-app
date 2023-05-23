@@ -21,5 +21,9 @@
 	},
 	"footer":{
 		"timezone": "Your time zone"
+	},
+	"errors": {
+		"loginFailed": "Login failed. Please try again or use the magic link.",
+		"tooManyRequests": "Too many requests. Please try again in 10 minutes."
 	}
 }

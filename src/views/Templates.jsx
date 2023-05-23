@@ -6,6 +6,7 @@ import classNames from 'html-classnames';
 import { version } from '../../package.json';
 import {useTranslation} from 'react-i18next';
 import {Toast} from '../components/Toast';
+import {useUserStore} from '../data/createStore';
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const offset = (new Date()).getTimezoneOffset() / -60;
@@ -33,7 +34,6 @@ const getBubblesType = (pathname) => {
 		return 'success';
 	}
 };
-
 export const TemplateMain = ({ children }) => {
 	const location = useLocation();
 	const pathparts = location.pathname.split('/');
@@ -49,6 +49,7 @@ export const TemplateMain = ({ children }) => {
 	const mainClassNames = classNames('as-main', modifiers);
 
 	const bubblesType = getBubblesType(location.pathname);
+
 	return (
 		<>
 			<header className="as-header">

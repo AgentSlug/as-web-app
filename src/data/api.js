@@ -1,15 +1,25 @@
 export class AnonymousClient {
-	#apiURl = import.meta.env.VITE_API_URL;
+	apiURl = import.meta.env.VITE_API_URL;
 
+	handleErrors(response) {
+		if (!response.ok) {
+			const error = new Error('Request failed');
+			error.status = response.status;
+			throw error;
+		}
+	}
 	async post(path, data) {
-		const response = await fetch(`${this.#apiURl}${path}`, {
+		const response = await fetch(`${this.apiURl}${path}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(data)
 		});
-		return response.json();
+		this.handleErrors(response);
+		const body = await response.json();
+
+		return [body, response];
 	}
 }
 
@@ -22,6 +32,20 @@ export class UserClient extends AnonymousClient {
 		this.#checkToken();
 	}
 
+	async get(path) {
+		const response = await fetch(`${this.apiURl}${path}`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${this.#token}`
+			}
+		});
+		this.handleErrors(response);
+
+		const body = await response.json();
+
+		return [body, response];
+	}
+
 	isLoggedIn() {
 		return !!this.#token;
 	}
@@ -31,14 +55,18 @@ export class UserClient extends AnonymousClient {
 			const token = JSON.parse(tokenString);
 			this.#token = token;
 		} catch (error) {
-			localStorage.removeItem(this.#tokenKey);
-			this.#token = null;
+			this.removeToken();
 		}
 	}
 
 	async setToken(token) {
 		localStorage.setItem(this.#tokenKey, JSON.stringify(token));
 		this.#checkToken();
+	}
+
+	async removeToken() {
+		localStorage.removeItem(this.#tokenKey);
+		this.#token = null;
 	}
 }
 

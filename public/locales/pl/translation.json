@@ -21,5 +21,9 @@
 	},
 	"footer": {
 		"timezone": "Twoja strefa czasowa"
+	},
+	"errors": {
+		"loginFailed": "Logowanie nieudane. Spróbuj ponownie lub użyj magicznego linku.",
+		"tooManyRequests": "Zbyt wiele prób. Spróbuj ponownie za 10 minut."
 	}
 }

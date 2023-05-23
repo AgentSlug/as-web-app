@@ -5,18 +5,22 @@
 		transform: translate3d(0, 0, 0);
 	}
 
+	90% {
+		transform: translate3d(0, 8rem, 0);
+	}
+
 	100% {
-		transform: translate3d(0, 11.5rem, 0);
+		transform: translate3d(0, 7.5rem, 0);
 	}
 }
 
 @keyframes slideOut {
 	0% {
-		transform: translate3d(0, 11.5rem, 0);
+		transform: translate3d(0, 7.5rem, 0);
 	}
 
-	10% {
-		transform: translate3d(0, 12rem, 0);
+	30% {
+		transform: translate3d(0, 8rem, 0);
 	}
 
 	100% {
@@ -29,10 +33,12 @@
 	justify-content: center;
 	align-items: center;
 	left: 0;
-	top: -10rem;
+	top: -6rem;
 	right: 0;
 
 	&__content {
+		backface-visibility: hidden;
+		perspective: 1000;
 		background: var(--color-background-toast);
 		width: min(30ch, 100%);
 		padding: 1rem;
@@ -42,7 +48,7 @@
 		align-items: center;
 		box-shadow: var(--shadow-floating);
 		border-radius: var(--radius-narrow);
-		transform: translateY(0);
+		transform: translate3d(0, 0, 0);
 		// when visible
 		&--visible {
 			animation: slideIn 500ms ease-in-out forwards;

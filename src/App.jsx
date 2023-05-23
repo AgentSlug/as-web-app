@@ -14,30 +14,41 @@ import './lang.js';
 const AuthView = () => import('./views/AuthView');
 
 const DashboardView = () => {
-	return <h1>Dashboard</h1>;
+	const userStore = useUserStore();
+	const handleLogout = () => userStore.logout();
+	return (
+		<>
+			<h1>Dashboard</h1>
+			<button onClick={handleLogout}>Logout</button>
+		</>
+	);
 };
 
 const useMainStoreWatcher = () => {
 	const navigate = useNavigate();
 	const location  = useLocation();
-	const user = useUserStore();
-
+	const userStore = useUserStore();
 	useEffect(() => {
-		if (!user.fetched) {
-			user.init();
+		if (!userStore.fetched) {
+			userStore.init();
+			return () => {};
 		}
-		if (!user.loggedIn && location.pathname.startsWith('/auth') === false) {
+		if (!userStore.loggedIn && location.pathname.startsWith('/auth') === false) {
 			navigate('/auth');
 		}
-		if (user.loggedIn && location.pathname.startsWith('/auth')) {
+		if (userStore.loggedIn && location.pathname.startsWith('/auth')) {
 			navigate('/');
 		}
-	}, [user, location, navigate]);
+	}, [userStore, location, navigate]);
 };
 
 
 const RoutesView = () => {
 	useMainStoreWatcher();
+	const userStore = useUserStore();
+	if (!userStore.fetched) {
+		return <p>Loading</p>;
+	}
 	return (
 		<Routes>
 			<Route path="/" element={<DashboardView />} />
