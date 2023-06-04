@@ -30,8 +30,10 @@ const getBubblesType = (pathname) => {
 	switch (true) {
 	case pathname.startsWith('/auth'):
 		return 'neutral';
-	default:
+	case pathname.startsWith('/dashboard'):
 		return 'success';
+	default:
+		return 'neutral';
 	}
 };
 export const TemplateMain = ({ children }) => {
