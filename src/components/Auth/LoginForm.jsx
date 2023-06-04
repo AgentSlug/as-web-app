@@ -2,6 +2,13 @@ import React, { useMemo } from 'react';
 import {create} from 'zustand';
 import {useToastStore, useUserStore} from '../../data/createStore';
 import { useTranslation } from 'react-i18next';
+import {
+	Form,
+	FormGroup,
+	FormSubmit,
+	FormInput,
+	FormActions,
+} from '../Form';
 
 export const LoginForm = () => {
 	const l = useTranslation();
@@ -37,32 +44,28 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="as-form">
-			<div className="as-form__group">
-				<label htmlFor="email" className="as-form__label">{l.t('common.email')}</label>
-				<input
+		<Form onSubmit={handleSubmit}>
+			<FormGroup>
+				<FormInput
+					label={l.t('common.email')}
 					type="email"
 					name="email"
-					id="email"
-					className="as-form__input"
 					required
 					onChange={handleChange}
 				/>
-			</div>
-			<div className="as-form__group">
-				<label htmlFor="password" className="as-form__label">{l.t('common.password')}</label>
-				<input
+			</FormGroup>
+			<FormGroup>
+				<FormInput
+					label={l.t('common.password')}
 					type="password"
 					name="password"
-					id="password"
-					className="as-form__input"
 					required
 					onChange={handleChange}
 				/>
-			</div>
-			<div className="as-form__actions">
-				<button type="submit" className="as-btn as-btn--primary">{l.t('common.login')}</button>
-			</div>
-		</form>
+			</FormGroup>
+			<FormActions>
+				<FormSubmit label={l.t('common.login')} />
+			</FormActions>
+		</Form>
 	);
 };
